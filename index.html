@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zetatk // Production Matrix</title>
+    <title>StyleSite // Component Engine Documentation</title>
     
+    <!-- Link our custom inspired library file -->
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-        /* Floating Glassmorphic Header Navigation Dock */
+        /* Floating App Header Integration */
         header {
             width: calc(100% - 2rem); max-width: 1200px; margin: 1.5rem auto; padding: 1rem 2rem;
             display: flex; justify-content: space-between; align-items: center; z-index: 1000;
@@ -28,10 +29,37 @@
         }
         #backToTop.btn-visible { opacity: 1; visibility: visible; transform: translateY(0); }
         
-        /* Banner Backdrop Target Imagery Maps */
-        .banner-specifications::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-changelogs::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-registry::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
+        /* Banner Graphics Backdrop Mapping */
+        .banner-intro::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-installation::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-usage::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
+
+        /* Code Block Styling - Strict 1 Item Per line unboxed representation */
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            color: #ff0055;
+            font-size: 1.1rem;
+        }
+        pre {
+            background: rgba(10, 14, 26, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 2rem;
+            border-radius: 20px;
+            overflow-x: auto;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        pre code {
+            background: none;
+            border: none;
+            padding: 0;
+            color: #b8c4ed;
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body class="ss-workspace">
@@ -39,76 +67,103 @@
     <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
     <header>
-        <div style="font-size: 1.5rem; font-weight: 900;">Zetatk<span style="color: #00f2ff; font-weight: 400;">//</span></div>
-        <div class="header-hint">Continuous Matrix</div>
+        <div style="font-size: 1.5rem; font-weight: 900;">StyleSite<span style="color: #00f2ff; font-weight: 400;">//</span></div>
+        <div class="header-hint">Core Engine Documentation</div>
     </header>
 
-    <section id="view-docs" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-specifications">
-            <h2>Specifications</h2>
-            <p>// Core Platform Engineering Architecture</p>
+    <!-- Section 1: Intro / Overview -->
+    <section id="intro" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-intro">
+            <h2>StyleSite v1.0.0</h2>
+            <p>// Ultra-Minimalist Component Layout Engine</p>
         </div>
 
         <div class="ss-row-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
                 <h3><i class="bi bi-file-earmark-text"></i> Overview</h3>
-                <p>Welcome to the <strong>Zetatk system engineering specifications guide</strong>. Zetatk is structured to enable modular distribution of high-performance rendering components, tools, and digital platforms seamlessly across the global developer pipeline.</p>
+                <p>Welcome to the official <strong>StyleSite deployment specifications guide</strong>. StyleSite is an inspired frontend CSS layout core library engine engineered to cleanly extract typography arrays entirely out of rigid background boxes, background cards, and grid borders. It enforces an absolute <strong>one horizontal element per line stack rule</strong> to completely erase text compression and layout overlaps on any viewport device layout.</p>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-eye"></i> Zetatk Vision</h3>
-                <p>"Our vision is to <strong>redefine the future of digital creation</strong> by building an ecosystem where every web developer has instant access to the ultimate tools and resources needed to build a seamless internet layout."</p>
+                <h3><i class="bi bi-cpu"></i> Structural Philosophy</h3>
+                <p>Traditional UI kits box your data, forcing layout components to wrap into micro-grids that collide on smaller screens. StyleSite structures your content linearly, mapping elements directly onto your background layers using fine-tuned fluid typography configurations and smooth hardware-accelerated motion streams.</p>
             </div>
         </div>
     </section>
 
-    <section id="view-changelog" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-changelogs">
-            <h2>Product Releases</h2>
-            <p>// Live Production Matrix Timeline</p>
+    <!-- Section 2: Installation -->
+    <section id="installation" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-installation">
+            <h2>Installation</h2>
+            <p>// Plugs seamlessly into your frontend stream</p>
         </div>
 
         <div class="ss-row-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
-                <div style="display: flex; gap: 1rem; align-items: center;">
-                    <span style="font-family: monospace; font-size: 0.9rem; color: #ff0055; background: rgba(255,0,85,0.06); padding: 0.3rem 0.8rem; border-radius: 8px; border: 1px solid rgba(255,0,85,0.2);">v1.2.0</span>
-                    <span style="color: #727e9c; font-size: 1rem; font-weight: 600;">June 2026</span>
-                </div>
-                <h3 style="margin-top: 1rem;">Released SnapUi, Valify-js, Devclockify-js</h3>
-                <p>The complete engineering libraries for secure frontend data input styles paired with ultra-low latency input data processing validation loops.</p>
+                <h3><i class="bi bi-download"></i> CDN Delivery Integration</h3>
+                <p>To implement StyleSite's clean design tokens instantly across your web endpoints, fetch and append the stylesheet asset component source block directly inside your web project layout document <code>&lt;head&gt;</code> module:</p>
+                <pre><code>&lt;link rel="stylesheet" href="https://sahirpunjwani.github.io/stylesite/index.css"&gt;</code></pre>
+            </div>
+
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-terminal"></i> Package Compilation</h3>
+                <p>If you're maintaining an application stack via node module systems, track and bundle the library dependencies locally using terminal installation profiles:</p>
+                <pre><code>npm install @stylesite/core</code></pre>
             </div>
         </div>
     </section>
 
-    <section id="view-products" class="ss-section">
+    <!-- Section 3: Core Class Usage Reference -->
+    <section id="usage" class="ss-section">
         <div class="ss-hero-backdrop ss-motion-reveal banner-registry">
-            <h2>Products By Zetatk</h2>
-            <p>// Open-Source Digital Playground Registry</p>
+            <h2>Usage Guide</h2>
+            <p>// Semantic syntax maps your layout properties natively</p>
         </div>
 
         <div class="ss-row-stack">
-            <a href="#" class="ss-unboxed-content ss-motion-reveal" style="text-decoration: none; color: inherit;">
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-                    <i class="bi bi-alarm" style="font-size: 1.8rem; color: #00f2ff;"></i>
-                    <span style="font-family: monospace; font-size: 0.85rem; color: #ff0055; font-weight: 700; text-transform: uppercase;">Library</span>
-                </div>
-                <div style="font-size: 1.9rem; font-weight: 700; font-family: monospace; margin-bottom: 0.5rem;">devclockify-js</div>
-                <p>A premium library of system tools designed for handling real-time clock triggers and elegant client alarms.</p>
-            </a>
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-layers"></i> 1. Root Workspace Setup</h3>
+                <p>Configure and normalize your layout document canvas instantly by assigning the <code>.ss-workspace</code> root engine wrapper layer directly to your document's primary <code>&lt;body&gt;</code> component tag:</p>
+                <pre><code>&lt;body class="ss-workspace"&gt;
+    &lt;!-- Your single line unboxed sections go here --&gt;
+&lt;/body&gt;</code></pre>
+            </div>
+
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-distribute-vertical"></i> 2. Direct Single-Row Layout Stacking</h3>
+                <p>To layout bare content statements effortlessly without nesting data inside container grids or border dividers, pass rows through the <code>.ss-row-stack</code> structural framework parent wrapper element:</p>
+                <pre><code>&lt;div class="ss-row-stack"&gt;
+    &lt;div class="ss-unboxed-content ss-motion-reveal"&gt;
+        &lt;h3&gt;Atomic Component Row&lt;/h3&gt;
+        &lt;p&gt;This text displays bare, container-free, and handles styling parameters instantly...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-image"></i> 3. Widescreen Graphic Title backdrops</h3>
+                <p>To append elegant title identifiers backed by high-resolution digital production artwork patterns, initialize the standalone <code>.ss-hero-backdrop</code> layer element tag inside your structural grid rows:</p>
+                <pre><code>&lt;div class="ss-hero-backdrop ss-motion-reveal" style="background-image: url('your-backdrop.jpg');"&gt;
+    &lt;h2&gt;Workspace Section Identifier&lt;/h2&gt;
+    &lt;p&gt;// Subtitle Engineering Parameter Traces&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+            </div>
         </div>
     </section>
 
+    <!-- Column Architecture Footer Framework Component Exception -->
     <footer class="ss-footer">
         <div class="ss-footer-content">
             <div class="ss-footer-brand">
-                <h4>Zetatk<span>//</span></h4>
-                <p>An advanced open-source laboratory engineered to deliver modern resources and utilities for developers globally.</p>
+                <h4>StyleSite<span>//</span></h4>
+                <p>An inspired open-source library core engineered to deliver modern containerless layout resources and components for developers globally.</p>
             </div>
             <div class="ss-footer-links">
                 <h5>Ecosystem</h5>
                 <ul>
-                    <li><a href="#view-docs">Documentation</a></li>
-                    <li><a href="#view-products">Products</a></li>
+                    <li><a href="#intro">Overview</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#usage">Usage Guide</a></li>
                 </ul>
             </div>
             <div class="ss-footer-links">
@@ -120,10 +175,11 @@
             </div>
         </div>
         <div class="ss-footer-bottom">
-            <p>&copy; 2026 Zetatk Platform. Engineered openly under MIT Specifications.</p>
+            <p>&copy; 2026 StyleSite Framework. Engineered openly under MIT Specifications.</p>
         </div>
     </footer>
 
+    <!-- Dual-Direction Scroll Observation Script Engine -->
     <script>
         const revealOptions = { root: null, threshold: 0.05, rootMargin: "0px 0px -10% 0px" };
         const scrollObserver = new IntersectionObserver((entries) => {
