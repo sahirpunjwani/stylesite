@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StyleSite // Component Engine Documentation</title>
     
-    <!-- Link our custom inspired library file -->
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
@@ -34,7 +33,7 @@
         .banner-installation::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
         .banner-usage::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
 
-        /* Code Block Styling - Strict 1 Item Per line unboxed representation */
+        /* Code Block Styling */
         code {
             font-family: 'JetBrains Mono', monospace;
             background: rgba(255, 255, 255, 0.03);
@@ -71,7 +70,6 @@
         <div class="header-hint">Core Engine Documentation</div>
     </header>
 
-    <!-- Section 1: Intro / Overview -->
     <section id="intro" class="ss-section">
         <div class="ss-hero-backdrop ss-motion-reveal banner-intro">
             <h2>StyleSite v1.0.0</h2>
@@ -81,41 +79,39 @@
         <div class="ss-row-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
                 <h3><i class="bi bi-file-earmark-text"></i> Overview</h3>
-                <p>Welcome to the official <strong>StyleSite deployment specifications guide</strong>. StyleSite is an inspired frontend CSS layout core library engine engineered to cleanly extract typography arrays entirely out of rigid background boxes, background cards, and grid borders. It enforces an absolute <strong>one horizontal element per line stack rule</strong> to completely erase text compression and layout overlaps on any viewport device layout.</p>
+                <p>Welcome to the official <strong>StyleSite specifications guide</strong>. StyleSite is an atomic, component-driven CSS layout library engineered to cleanly extract typography arrays entirely out of rigid background boxes, side-by-side grids, and blocking card layouts. It enforces an absolute <strong>one horizontal element per line stack rule</strong> to completely erase side-by-side text compression and content layout overlaps on any device.</p>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
                 <h3><i class="bi bi-cpu"></i> Structural Philosophy</h3>
-                <p>Traditional UI kits box your data, forcing layout components to wrap into micro-grids that collide on smaller screens. StyleSite structures your content linearly, mapping elements directly onto your background layers using fine-tuned fluid typography configurations and smooth hardware-accelerated motion streams.</p>
+                <p>Traditional UI frameworks force your site data into tight columns that break and squeeze on smaller screen viewports. StyleSite structural properties stack your code elements linearly on a vertical axis, organizing elements cleanly on top of an interactive dark aurora canvas with high-legibility spacing and responsive typography.</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Installation -->
     <section id="installation" class="ss-section">
         <div class="ss-hero-backdrop ss-motion-reveal banner-installation">
             <h2>Installation</h2>
-            <p>// Plugs seamlessly into your frontend stream</p>
+            <p>// Plugs seamlessly into your web project layouts</p>
         </div>
 
         <div class="ss-row-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-download"></i> CDN Delivery Integration</h3>
-                <p>To implement StyleSite's clean design tokens instantly across your web endpoints, fetch and append the stylesheet asset component source block directly inside your web project layout document <code>&lt;head&gt;</code> module:</p>
-                <pre><code>&lt;link rel="stylesheet" href="https://sahirpunjwani.github.io/stylesite/index.css"&gt;</code></pre>
+                <h3><i class="bi bi-download"></i> CDN Production Delivery</h3>
+                <p>To implement StyleSite's styling rules instantly across your public web endpoints, grab and append the compiled production stylesheet link right inside your workspace document's primary <code>&lt;head&gt;</code> module:</p>
+                <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sahirpunjwani/stylesite@main/index.css"&gt;</code></pre>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-terminal"></i> Package Compilation</h3>
-                <p>If you're maintaining an application stack via node module systems, track and bundle the library dependencies locally using terminal installation profiles:</p>
+                <h3><i class="bi bi-terminal"></i> NPM Integration</h3>
+                <p>If you prefer installing packages straight into your active node configuration workflows, track and bundle the core package module using the command line profile:</p>
                 <pre><code>npm install @stylesite/core</code></pre>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Core Class Usage Reference -->
     <section id="usage" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-registry">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-usage">
             <h2>Usage Guide</h2>
             <p>// Semantic syntax maps your layout properties natively</p>
         </div>
@@ -123,40 +119,39 @@
         <div class="ss-row-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
                 <h3><i class="bi bi-layers"></i> 1. Root Workspace Setup</h3>
-                <p>Configure and normalize your layout document canvas instantly by assigning the <code>.ss-workspace</code> root engine wrapper layer directly to your document's primary <code>&lt;body&gt;</code> component tag:</p>
+                <p>Initialize and normalize your document background instantly by applying the <code>.ss-workspace</code> style class right onto your main <code>&lt;body&gt;</code> wrapper element:</p>
                 <pre><code>&lt;body class="ss-workspace"&gt;
-    &lt;!-- Your single line unboxed sections go here --&gt;
+    &lt;!-- Content segments deploy inline --&gt;
 &lt;/body&gt;</code></pre>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
                 <h3><i class="bi bi-distribute-vertical"></i> 2. Direct Single-Row Layout Stacking</h3>
-                <p>To layout bare content statements effortlessly without nesting data inside container grids or border dividers, pass rows through the <code>.ss-row-stack</code> structural framework parent wrapper element:</p>
+                <p>To layout bare text content rows cleanly without enclosing data arrays inside container boxes, pass components through the <code>.ss-row-stack</code> structural frame wrapper block:</p>
                 <pre><code>&lt;div class="ss-row-stack"&gt;
     &lt;div class="ss-unboxed-content ss-motion-reveal"&gt;
-        &lt;h3&gt;Atomic Component Row&lt;/h3&gt;
-        &lt;p&gt;This text displays bare, container-free, and handles styling parameters instantly...&lt;/p&gt;
+        &lt;h3&gt;Component Heading&lt;/h3&gt;
+        &lt;p&gt;This text displays bare, container-free, and styles itself automatically...&lt;/p&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-image"></i> 3. Widescreen Graphic Title backdrops</h3>
-                <p>To append elegant title identifiers backed by high-resolution digital production artwork patterns, initialize the standalone <code>.ss-hero-backdrop</code> layer element tag inside your structural grid rows:</p>
+                <h3><i class="bi bi-image"></i> 3. Widescreen Graphic Title Backdrops</h3>
+                <p>To launch elegant title header visuals backed by premium background artwork patterns, embed the standalone <code>.ss-hero-backdrop</code> layout component inside your workspace blocks:</p>
                 <pre><code>&lt;div class="ss-hero-backdrop ss-motion-reveal" style="background-image: url('your-backdrop.jpg');"&gt;
-    &lt;h2&gt;Workspace Section Identifier&lt;/h2&gt;
-    &lt;p&gt;// Subtitle Engineering Parameter Traces&lt;/p&gt;
+    &lt;h2&gt;Workspace Title Row&lt;/h2&gt;
+    &lt;p&gt;// Engineering Track Metrics Subtitle&lt;/p&gt;
 &lt;/div&gt;</code></pre>
             </div>
         </div>
     </section>
 
-    <!-- Column Architecture Footer Framework Component Exception -->
     <footer class="ss-footer">
         <div class="ss-footer-content">
             <div class="ss-footer-brand">
                 <h4>StyleSite<span>//</span></h4>
-                <p>An inspired open-source library core engineered to deliver modern containerless layout resources and components for developers globally.</p>
+                <p>An open-source layout repository core engineered to deliver modern, containerless stylesheet assets for developers globally.</p>
             </div>
             <div class="ss-footer-links">
                 <h5>Ecosystem</h5>
@@ -169,7 +164,7 @@
             <div class="ss-footer-links">
                 <h5>Community</h5>
                 <ul>
-                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Portfolio</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Profile</a></li>
                     <li><a href="https://discord.com" target="_blank" rel="noopener">Discord Server</a></li>
                 </ul>
             </div>
@@ -179,7 +174,6 @@
         </div>
     </footer>
 
-    <!-- Dual-Direction Scroll Observation Script Engine -->
     <script>
         const revealOptions = { root: null, threshold: 0.05, rootMargin: "0px 0px -10% 0px" };
         const scrollObserver = new IntersectionObserver((entries) => {
