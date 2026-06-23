@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StyleSite // Component Engine Documentation</title>
     
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="stylesite.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-        /* Floating App Header Integration */
+        /* Sticky Glass Header & Navigation Dock */
         header {
             width: calc(100% - 2rem); max-width: 1200px; margin: 1.5rem auto; padding: 1rem 2rem;
             display: flex; justify-content: space-between; align-items: center; z-index: 1000;
@@ -28,37 +28,21 @@
         }
         #backToTop.btn-visible { opacity: 1; visibility: visible; transform: translateY(0); }
         
-        /* Banner Graphics Backdrop Mapping */
-        .banner-intro::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-installation::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-usage::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
+        /* Graphics Backdrop Background Layering mapping */
+        .banner-overview::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-install::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-syntax::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
 
-        /* Code Block Styling */
+        /* Code Segment Formatting */
         code {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            color: #ff0055;
-            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', monospace; background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.2rem 0.6rem; border-radius: 6px; color: #ff0055; font-size: 1.1rem;
         }
         pre {
-            background: rgba(10, 14, 26, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 2rem;
-            border-radius: 20px;
-            overflow-x: auto;
-            width: 100%;
-            margin-top: 1rem;
+            background: rgba(10, 14, 26, 0.4); border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 2rem; border-radius: 20px; overflow-x: auto; width: 100%; margin-top: 1rem;
         }
-        pre code {
-            background: none;
-            border: none;
-            padding: 0;
-            color: #b8c4ed;
-            font-size: 1.2rem;
-        }
+        pre code { background: none; border: none; padding: 0; color: #b8c4ed; font-size: 1.2rem; }
     </style>
 </head>
 <body class="ss-workspace">
@@ -70,78 +54,69 @@
         <div class="header-hint">Core Engine Documentation</div>
     </header>
 
-    <section id="intro" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-intro">
+    <section id="overview" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-overview">
             <h2>StyleSite v1.0.0</h2>
-            <p>// Ultra-Minimalist Component Layout Engine</p>
+            <p>// High-Performance Box-Free Interface Engine</p>
         </div>
 
-        <div class="ss-row-stack">
+        <div class="ss-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-file-earmark-text"></i> Overview</h3>
-                <p>Welcome to the official <strong>StyleSite specifications guide</strong>. StyleSite is an atomic, component-driven CSS layout library engineered to cleanly extract typography arrays entirely out of rigid background boxes, side-by-side grids, and blocking card layouts. It enforces an absolute <strong>one horizontal element per line stack rule</strong> to completely erase side-by-side text compression and content layout overlaps on any device.</p>
+                <h3><i class="bi bi-file-earmark-text"></i> Architectural Concept</h3>
+                <p>Welcome to the core documentation home of <strong>StyleSite</strong>. StyleSite is an independent, lightweight CSS design library engineered to cleanly output layout properties entirely bare on the screen viewport. It strips away container blocks, background cards, and grid dividers, mapping your data fields vertically using a strict <strong>one horizontal component per row stack rule</strong>. This effectively isolates typography layers, avoiding data compression issues completely.</p>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-cpu"></i> Structural Philosophy</h3>
-                <p>Traditional UI frameworks force your site data into tight columns that break and squeeze on smaller screen viewports. StyleSite structural properties stack your code elements linearly on a vertical axis, organizing elements cleanly on top of an interactive dark aurora canvas with high-legibility spacing and responsive typography.</p>
+                <h3><i class="bi bi-cpu"></i> Fluid Layout Strategy</h3>
+                <p>By forcing content rows to cascade individually down the vertical axis of the web layout, your interfaces stay naturally fluid. Text blocks, headings, and code parameter tables format safely across any resolution array with absolute zero viewport overlap risk.</p>
             </div>
         </div>
     </section>
 
     <section id="installation" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-installation">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-install">
             <h2>Installation</h2>
-            <p>// Plugs seamlessly into your web project layouts</p>
+            <p>// Distribute and implement components instantly</p>
         </div>
 
-        <div class="ss-row-stack">
+        <div class="ss-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-download"></i> CDN Production Delivery</h3>
-                <p>To implement StyleSite's styling rules instantly across your public web endpoints, grab and append the compiled production stylesheet link right inside your workspace document's primary <code>&lt;head&gt;</code> module:</p>
-                <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sahirpunjwani/stylesite@main/index.css"&gt;</code></pre>
+                <h3><i class="bi bi-download"></i> Production CDN Link</h3>
+                <p>To run your interface pages over StyleSite's core utility layout layers instantly, load the compiled production sheet file directly inside your template markup's <code>&lt;head&gt;</code> structure:</p>
+                <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sahirpunjwani/stylesite@main/stylesite.css"&gt;</code></pre>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-terminal"></i> NPM Integration</h3>
-                <p>If you prefer installing packages straight into your active node configuration workflows, track and bundle the core package module using the command line profile:</p>
+                <h3><i class="bi bi-terminal"></i> Package Workflow Setup</h3>
+                <p>For application distributions managed using node dependencies, initialize and fetch the framework asset module directly inside local tracking environments:</p>
                 <pre><code>npm install @stylesite/core</code></pre>
             </div>
         </div>
     </section>
 
     <section id="usage" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-usage">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-syntax">
             <h2>Usage Guide</h2>
-            <p>// Semantic syntax maps your layout properties natively</p>
+            <p>// Build responsive stack views out of semantic utility tags</p>
         </div>
 
-        <div class="ss-row-stack">
+        <div class="ss-stack">
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-layers"></i> 1. Root Workspace Setup</h3>
-                <p>Initialize and normalize your document background instantly by applying the <code>.ss-workspace</code> style class right onto your main <code>&lt;body&gt;</code> wrapper element:</p>
+                <h3><i class="bi bi-layers"></i> 1. Layout Canvas Initialization</h3>
+                <p>Set up your dark cosmic canvas variables smoothly across the framework by declaring the <code>.ss-workspace</code> style element block rule directly inside the structural <code>&lt;body&gt;</code> page tag:</p>
                 <pre><code>&lt;body class="ss-workspace"&gt;
-    &lt;!-- Content segments deploy inline --&gt;
+    &lt;!-- Embedded sections cascade here --&gt;
 &lt;/body&gt;</code></pre>
             </div>
 
             <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-distribute-vertical"></i> 2. Direct Single-Row Layout Stacking</h3>
-                <p>To layout bare text content rows cleanly without enclosing data arrays inside container boxes, pass components through the <code>.ss-row-stack</code> structural frame wrapper block:</p>
-                <pre><code>&lt;div class="ss-row-stack"&gt;
+                <h3><i class="bi bi-distribute-vertical"></i> 2. Structuring Unboxed Rows</h3>
+                <p>To align text sequences without trapping elements inside boundaries or boxes, stack your lines using the <code>.ss-row-stack</code> structural framework block token:</p>
+                <pre><code>&lt;div class="ss-stack"&gt;
     &lt;div class="ss-unboxed-content ss-motion-reveal"&gt;
-        &lt;h3&gt;Component Heading&lt;/h3&gt;
-        &lt;p&gt;This text displays bare, container-free, and styles itself automatically...&lt;/p&gt;
+        &lt;h3&gt;Section Header Tag&lt;/h3&gt;
+        &lt;p&gt;This component renders completely container-free with direct spacing alignment variables...&lt;/p&gt;
     &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-            </div>
-
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-image"></i> 3. Widescreen Graphic Title Backdrops</h3>
-                <p>To launch elegant title header visuals backed by premium background artwork patterns, embed the standalone <code>.ss-hero-backdrop</code> layout component inside your workspace blocks:</p>
-                <pre><code>&lt;div class="ss-hero-backdrop ss-motion-reveal" style="background-image: url('your-backdrop.jpg');"&gt;
-    &lt;h2&gt;Workspace Title Row&lt;/h2&gt;
-    &lt;p&gt;// Engineering Track Metrics Subtitle&lt;/p&gt;
 &lt;/div&gt;</code></pre>
             </div>
         </div>
@@ -151,26 +126,26 @@
         <div class="ss-footer-content">
             <div class="ss-footer-brand">
                 <h4>StyleSite<span>//</span></h4>
-                <p>An open-source layout repository core engineered to deliver modern, containerless stylesheet assets for developers globally.</p>
+                <p>An open-source asset engine engineered to deploy high-legibility containerless typography components globally.</p>
             </div>
             <div class="ss-footer-links">
-                <h5>Ecosystem</h5>
+                <h5>Documentation</h5>
                 <ul>
-                    <li><a href="#intro">Overview</a></li>
-                    <li><a href="#installation">Installation</a></li>
-                    <li><a href="#usage">Usage Guide</a></li>
+                    <li><a href="#overview">Concept Overview</a></li>
+                    <li><a href="#installation">CDN Installation</a></li>
+                    <li><a href="#usage">Class Usage Guide</a></li>
                 </ul>
             </div>
             <div class="ss-footer-links">
-                <h5>Community</h5>
+                <h5>Repository</h5>
                 <ul>
-                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Profile</a></li>
-                    <li><a href="https://discord.com" target="_blank" rel="noopener">Discord Server</a></li>
+                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Source</a></li>
+                    <li><a href="https://discord.com" target="_blank" rel="noopener">Developer Discord</a></li>
                 </ul>
             </div>
         </div>
         <div class="ss-footer-bottom">
-            <p>&copy; 2026 StyleSite Framework. Engineered openly under MIT Specifications.</p>
+            <p>&copy; 2026 StyleSite Library. Engineered openly under MIT Specifications.</p>
         </div>
     </footer>
 
