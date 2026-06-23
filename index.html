@@ -3,171 +3,751 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StyleSite // Component Engine Documentation</title>
+    <title>StyleSite // Pure CSS Layout Engine</title>
     
-    <link rel="stylesheet" href="stylesite.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
     <style>
-        /* Sticky Glass Header & Navigation Dock */
-        header {
-            width: calc(100% - 2rem); max-width: 1200px; margin: 1.5rem auto; padding: 1rem 2rem;
-            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
-            background: rgba(4, 6, 14, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            position: sticky; top: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px;
+        /* 1. Global Reset & Token Engine */
+        :root {
+            --bg-main: #0d1117;
+            --bg-surface: #161b22;
+            --bg-element: #21262d;
+            --bg-border: #30363d;
+            --text-main: #c9d1d9;
+            --text-bright: #f0f6fc;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.15);
+            --code-red: #ff7b72;
+            
+            --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .header-hint {
-            font-family: monospace; font-size: 0.8rem; color: #00f2ff; background: rgba(0, 242, 255, 0.08);
-            padding: 0.5rem 1.2rem; border-radius: 30px; border: 1px solid rgba(0, 242, 255, 0.25); text-transform: uppercase;
-        }
-        #backToTop {
-            position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px; background: rgba(4, 6, 14, 0.8);
-            border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; font-size: 1.4rem; cursor: pointer; z-index: 999;
-            opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.4s ease;
-        }
-        #backToTop.btn-visible { opacity: 1; visibility: visible; transform: translateY(0); }
-        
-        /* Graphics Backdrop Background Layering mapping */
-        .banner-overview::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-install::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
-        .banner-syntax::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
 
-        /* Code Segment Formatting */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        /* Smooth Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-element);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--bg-border);
+        }
+
+        /* 2. Premium Header Engine Layout */
+        header {
+            width: 100%;
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--bg-element);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .brand-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: var(--transition-fast);
+        }
+
+        .brand-icon {
+            color: var(--accent);
+            font-size: 1.35rem;
+        }
+
+        .brand-logo span {
+            color: var(--accent);
+            font-family: 'Fira Code', monospace;
+            font-weight: 400;
+        }
+
+        .brand-logo:hover {
+            opacity: 0.85;
+        }
+
+        .version-badge {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: var(--bg-element);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--bg-border);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-shortcut {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition-fast);
+        }
+
+        .nav-shortcut:hover {
+            color: var(--text-bright);
+        }
+
+        .nav-divider {
+            height: 16px;
+            width: 1px;
+            background: var(--bg-border);
+        }
+
+        .github-btn {
+            display: flex;
+            align-items: center;
+            background: var(--bg-element);
+            border: 1px solid var(--bg-border);
+            border-radius: 6px;
+            padding: 0.35rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-bright);
+            text-decoration: none;
+            gap: 0.5rem;
+            transition: var(--transition-fast);
+        }
+
+        .github-btn:hover {
+            background: var(--bg-border);
+            border-color: #8b949e;
+        }
+
+        .gh-counter {
+            background: rgba(139, 148, 158, 0.15);
+            padding: 0.05rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: var(--bg-element);
+            border: 1px solid var(--bg-border);
+            color: var(--text-bright);
+            padding: 0.4rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: var(--transition-smooth);
+        }
+
+        .menu-toggle:hover {
+            background: var(--bg-border);
+        }
+
+        /* 3. Documentation Layout Frame */
+        .docs-layout-frame {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 4rem;
+            padding: 3rem 2rem;
+            flex: 1;
+        }
+
+        /* Left Sidebar Sticky Navigation */
+        .docs-sidebar {
+            position: sticky;
+            top: 6rem;
+            height: calc(100vh - 8rem);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding-right: 1rem;
+        }
+
+        .sidebar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .sidebar-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .sidebar-link {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            transition: var(--transition-smooth);
+        }
+
+        .sidebar-link:hover {
+            color: var(--accent);
+            background: rgba(88, 166, 255, 0.05);
+        }
+
+        .sidebar-link.active {
+            color: var(--text-bright);
+            background: var(--accent-glow);
+            font-weight: 500;
+            border-left: 2px solid var(--accent);
+            border-radius: 0 6px 6px 0;
+            padding-left: calc(0.75rem - 2px);
+        }
+
+        /* Main Documentation Flow Stream */
+        .docs-content-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+            min-width: 0; /* Prevents 1fr grid columns from expanding beyond horizontal bounds */
+        }
+
+        .docs-segment {
+            scroll-mt: 6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .segment-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-bright);
+            letter-spacing: -0.5px;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--bg-element);
+        }
+
+        .ss-vertical-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            width: 100%;
+        }
+
+        .ss-unboxed-row {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .ss-unboxed-row h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .ss-unboxed-row h3 i {
+            color: var(--accent);
+            font-size: 1.25rem;
+        }
+
+        .ss-unboxed-row p {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-wrap: break-word; /* Ensures long continuous paths wrap instead of overflowing */
+        }
+
+        .ss-unboxed-row p strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* 4. Polished Code Block Components */
         code {
-            font-family: 'JetBrains Mono', monospace; background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.2rem 0.6rem; border-radius: 6px; color: #ff0055; font-size: 1.1rem;
+            font-family: 'Fira Code', monospace;
+            background: var(--bg-element);
+            padding: 0.2rem 0.4rem;
+            border-radius: 6px;
+            color: var(--code-red);
+            font-size: 0.9rem;
+            border: 1px solid var(--bg-border);
         }
+
+        .code-wrapper {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-element);
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .code-wrapper:hover {
+            border-color: var(--bg-border);
+        }
+
         pre {
-            background: rgba(10, 14, 26, 0.4); border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 2rem; border-radius: 20px; overflow-x: auto; width: 100%; margin-top: 1rem;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin: 0;
         }
-        pre code { background: none; border: none; padding: 0; color: #b8c4ed; font-size: 1.2rem; }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            border: none;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: var(--bg-element);
+            border: 1px solid var(--bg-border);
+            color: var(--text-muted);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: var(--transition-smooth);
+        }
+
+        .copy-btn:hover {
+            color: var(--text-bright);
+            background: var(--bg-border);
+        }
+
+        /* 5. Fixed Utility Elements */
+        #backToTop {
+            position: fixed; 
+            bottom: 2rem; 
+            right: 2rem; 
+            width: 46px; 
+            height: 46px; 
+            background: var(--bg-surface);
+            border: 1px solid var(--bg-border); 
+            color: var(--accent); 
+            border-radius: 50%; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            z-index: 999;
+            opacity: 0; 
+            visibility: hidden; 
+            transform: translateY(10px); 
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        #backToTop.btn-visible { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translateY(0); 
+        }
+        
+        #backToTop:hover { 
+            background: var(--bg-element); 
+            color: var(--text-bright);
+            transform: translateY(-2px);
+        }
+
+        /* 6. Footer System */
+        footer {
+            width: 100%;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--bg-element);
+            padding: 2.5rem 2rem;
+            display: flex;
+            justify-content: center;
+            margin-top: 6rem;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        /* 7. Hardware-accelerated Scroll Animations */
+        .zm-motion-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .zm-motion-reveal.view-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 8. Adaptive Mobile Viewports */
+        @media (max-width: 868px) {
+            header { padding: 0.75rem 1.25rem; }
+            .header-nav, .nav-divider, .github-btn { display: none; }
+            .menu-toggle { display: block; }
+
+            .docs-layout-frame { 
+                grid-template-columns: 1fr; 
+                gap: 3rem; 
+                padding: 2rem 1.5rem; 
+            }
+
+            /* Responsive Sliding Drawer Context */
+            .docs-sidebar { 
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--bg-surface);
+                z-index: 1001;
+                padding: 5rem 1.5rem 2rem 1.5rem;
+                border-right: 1px solid var(--bg-element);
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                pointer-events: none;
+            }
+
+            .docs-sidebar.drawer-open {
+                left: 0;
+                pointer-events: auto;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(4px);
+                z-index: 1000;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            .docs-content-stream { gap: 4rem; }
+            .footer-container { flex-direction: column; gap: 1.25rem; text-align: center; }
+        }
     </style>
 </head>
-<body class="ss-workspace">
+<body>
 
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
 
     <header>
-        <div style="font-size: 1.5rem; font-weight: 900;">StyleSite<span style="color: #00f2ff; font-weight: 400;">//</span></div>
-        <div class="header-hint">Core Engine Documentation</div>
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#" class="brand-logo" aria-label="StyleSite Home">
+                    <i class="bi bi-layers-half brand-icon"></i>
+                    StyleSite<span>.css</span>
+                </a>
+                <div class="version-badge">v1.0.0</div>
+            </div>
+            
+            <div class="header-right">
+                <nav class="header-nav" aria-label="Quick links">
+                    <a href="#overview" class="nav-shortcut">Docs</a>
+                    <a href="https://github.com/sahirpunjwani/stylesite" target="_blank" rel="noopener" class="nav-shortcut">Community</a>
+                </nav>
+                <span class="nav-divider"></span>
+                <a href="https://github.com/sahirpunjwani/stylesite" target="_blank" rel="noopener" class="github-btn" aria-label="Star StyleSite on GitHub">
+                    <i class="bi bi-github"></i>
+                    <span>Star</span>
+                    <span class="gh-counter">1.2k</span>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
     </header>
 
-    <section id="overview" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-overview">
-            <h2>StyleSite v1.0.0</h2>
-            <p>// High-Performance Box-Free Interface Engine</p>
-        </div>
-
-        <div class="ss-stack">
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-file-earmark-text"></i> Architectural Concept</h3>
-                <p>Welcome to the core documentation home of <strong>StyleSite</strong>. StyleSite is an independent, lightweight CSS design library engineered to cleanly output layout properties entirely bare on the screen viewport. It strips away container blocks, background cards, and grid dividers, mapping your data fields vertically using a strict <strong>one horizontal component per row stack rule</strong>. This effectively isolates typography layers, avoiding data compression issues completely.</p>
+    <div class="docs-layout-frame">
+        
+        <aside class="docs-sidebar" id="docsSidebar">
+            <div class="sidebar-group">
+                <div class="sidebar-title">Getting Started</div>
+                <ul class="sidebar-menu">
+                    <li><a href="#overview" class="sidebar-link"><i class="bi bi-book"></i> Overview</a></li>
+                    <li><a href="#installation" class="sidebar-link"><i class="bi bi-download"></i> Installation</a></li>
+                </ul>
             </div>
-
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-cpu"></i> Fluid Layout Strategy</h3>
-                <p>By forcing content rows to cascade individually down the vertical axis of the web layout, your interfaces stay naturally fluid. Text blocks, headings, and code parameter tables format safely across any resolution array with absolute zero viewport overlap risk.</p>
+            <div class="sidebar-group">
+                <div class="sidebar-title">Architecture</div>
+                <ul class="sidebar-menu">
+                    <li><a href="#usage" class="sidebar-link"><i class="bi bi-code-slash"></i> Class Usage</a></li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </aside>
 
-    <section id="installation" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-install">
-            <h2>Installation</h2>
-            <p>// Distribute and implement components instantly</p>
-        </div>
+        <main class="docs-content-stream">
+            
+            <section id="overview" class="docs-segment">
+                <h2 class="segment-title zm-motion-reveal">Overview</h2>
+                
+                <div class="ss-vertical-stack">
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-text-left"></i> Core Concept</h3>
+                        <p>Welcome to the <strong>StyleSite CSS framework specifications</strong>. StyleSite is a pure frontend layout library engineered to output typography arrays entirely unboxed on the viewport canvas. It removes side-by-side table grids, borders, and card shapes, presenting content linearly on a vertical axis using a strict <strong>one horizontal component per row stack rule</strong> to ensure flawless legibility.</p>
+                    </div>
 
-        <div class="ss-stack">
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-download"></i> Production CDN Link</h3>
-                <p>To run your interface pages over StyleSite's core utility layout layers instantly, load the compiled production sheet file directly inside your template markup's <code>&lt;head&gt;</code> structure:</p>
-                <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sahirpunjwani/stylesite@main/stylesite.css"&gt;</code></pre>
-            </div>
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-layout-sidebar"></i> Linear Axis Flow</h3>
+                        <p>By forcing text blocks and sections to cascade individually down the screen layer, the framework eliminates grid formatting limitations. Content blocks fluidly adjust to fit mobile screens with absolute zero risk of compression or text overlaps.</p>
+                    </div>
+                </div>
+            </section>
 
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-terminal"></i> Package Workflow Setup</h3>
-                <p>For application distributions managed using node dependencies, initialize and fetch the framework asset module directly inside local tracking environments:</p>
-                <pre><code>npm install @stylesite/core</code></pre>
-            </div>
-        </div>
-    </section>
+            <section id="installation" class="docs-segment">
+                <h2 class="segment-title zm-motion-reveal">Installation</h2>
+                
+                <div class="ss-vertical-stack">
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-cloud-arrow-down"></i> Global CDN Link</h3>
+                        <p>To drop StyleSite directly into any project, simply import the production CSS file reference into the document <code>&lt;head&gt;</code> module:</p>
+                        <div class="code-wrapper">
+                            <button class="copy-btn" data-clipboard><i class="bi bi-clipboard"></i> Copy</button>
+                            <pre><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sahirpunjwani/stylesite@main/stylesite.css"&gt;</code></pre>
+                        </div>
+                    </div>
 
-    <section id="usage" class="ss-section">
-        <div class="ss-hero-backdrop ss-motion-reveal banner-syntax">
-            <h2>Usage Guide</h2>
-            <p>// Build responsive stack views out of semantic utility tags</p>
-        </div>
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-folder-symlink"></i> Local File Inclusion</h3>
+                        <p>Alternatively, copy the <code>stylesite.css</code> file straight into your local workspace directory and reference it natively:</p>
+                        <div class="code-wrapper">
+                            <button class="copy-btn" data-clipboard><i class="bi bi-clipboard"></i> Copy</button>
+                            <pre><code>&lt;link rel="stylesheet" href="stylesite.css"&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <div class="ss-stack">
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-layers"></i> 1. Layout Canvas Initialization</h3>
-                <p>Set up your dark cosmic canvas variables smoothly across the framework by declaring the <code>.ss-workspace</code> style element block rule directly inside the structural <code>&lt;body&gt;</code> page tag:</p>
-                <pre><code>&lt;body class="ss-workspace"&gt;
-    &lt;!-- Embedded sections cascade here --&gt;
+            <section id="usage" class="docs-segment">
+                <h2 class="segment-title zm-motion-reveal">Class Usage</h2>
+                
+                <div class="ss-vertical-stack">
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-terminal"></i> 1. Workspace Activation</h3>
+                        <p>Normalize your workspace environment by adding the core <code>.ss-workspace</code> class rule directly to the parent <code>&lt;body&gt;</code> tag:</p>
+                        <div class="code-wrapper">
+                            <button class="copy-btn" data-clipboard><i class="bi bi-clipboard"></i> Copy</button>
+                            <pre><code>&lt;body class="ss-workspace"&gt;
+    &lt;!-- Layout segments cascade natively --&gt;
 &lt;/body&gt;</code></pre>
-            </div>
+                        </div>
+                    </div>
 
-            <div class="ss-unboxed-content ss-motion-reveal">
-                <h3><i class="bi bi-distribute-vertical"></i> 2. Structuring Unboxed Rows</h3>
-                <p>To align text sequences without trapping elements inside boundaries or boxes, stack your lines using the <code>.ss-row-stack</code> structural framework block token:</p>
-                <pre><code>&lt;div class="ss-stack"&gt;
-    &lt;div class="ss-unboxed-content ss-motion-reveal"&gt;
-        &lt;h3&gt;Section Header Tag&lt;/h3&gt;
-        &lt;p&gt;This component renders completely container-free with direct spacing alignment variables...&lt;/p&gt;
+                    <div class="ss-unboxed-row zm-motion-reveal">
+                        <h3><i class="bi bi-list-nested"></i> 2. Single-Row Text Stacking</h3>
+                        <p>To align typography blocks cleanly without nested containers, pass rows inside the <code>.ss-row-stack</code> layout token element wrapper:</p>
+                        <div class="code-wrapper">
+                            <button class="copy-btn" data-clipboard><i class="bi bi-clipboard"></i> Copy</button>
+                            <pre><code>&lt;div class="ss-row-stack"&gt;
+    &div class="ss-unboxed-content zm-motion-reveal"&gt;
+        &lt;h3&gt;Section Heading Title&lt;/h3&gt;
+        &lt;p&gt;Your description text outputs and spaces itself out automatically...&lt;/p>
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-            </div>
-        </div>
-    </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <footer class="ss-footer">
-        <div class="ss-footer-content">
-            <div class="ss-footer-brand">
-                <h4>StyleSite<span>//</span></h4>
-                <p>An open-source asset engine engineered to deploy high-legibility containerless typography components globally.</p>
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2026 StyleSite Framework. Built openly under open MIT source definitions.</p>
+            <div class="footer-links">
+                <a href="https://github.com/sahirpunjwani/stylesite" target="_blank" rel="noopener"><i class="bi bi-github"></i> GitHub Source</a>
+                <a href="#" target="_blank" rel="noopener"><i class="bi bi-discord"></i> Community</a>
             </div>
-            <div class="ss-footer-links">
-                <h5>Documentation</h5>
-                <ul>
-                    <li><a href="#overview">Concept Overview</a></li>
-                    <li><a href="#installation">CDN Installation</a></li>
-                    <li><a href="#usage">Class Usage Guide</a></li>
-                </ul>
-            </div>
-            <div class="ss-footer-links">
-                <h5>Repository</h5>
-                <ul>
-                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Source</a></li>
-                    <li><a href="https://discord.com" target="_blank" rel="noopener">Developer Discord</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="ss-footer-bottom">
-            <p>&copy; 2026 StyleSite Library. Engineered openly under MIT Specifications.</p>
         </div>
     </footer>
 
     <script>
-        const revealOptions = { root: null, threshold: 0.05, rootMargin: "0px 0px -10% 0px" };
-        const scrollObserver = new IntersectionObserver((entries) => {
+        // Core Animation Intersection Engine 
+        const observerSettings = { root: null, threshold: 0.05, rootMargin: "0px 0px -8% 0px" };
+        const viewObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('view-visible');
-                else entry.target.classList.remove('view-visible');
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('view-visible');
+                }
             });
-        }, revealOptions);
+        }, observerSettings);
+
+        // Active Navigation Sidebar Element Highlighting Engine
+        const sections = document.querySelectorAll('.docs-segment');
+        const navLinks = document.querySelectorAll('.sidebar-link');
+        
+        window.addEventListener('scroll', () => {
+            let currentActiveSectionId = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.scrollY >= sectionTop - 120) {
+                    currentActiveSectionId = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentActiveSectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Copy-to-Clipboard Functionality Engine
+        document.querySelectorAll('[data-clipboard]').forEach(button => {
+            button.addEventListener('click', async () => {
+                const codeBlock = button.nextElementSibling.querySelector('code');
+                if (!codeBlock) return;
+                
+                try {
+                    const textToCopy = codeBlock.innerText;
+                    await navigator.clipboard.writeText(textToCopy);
+                    
+                    button.innerHTML = `<i class="bi bi-check2"></i> Copied!`;
+                    button.style.color = 'var(--accent)';
+                    setTimeout(() => {
+                        button.innerHTML = `<i class="bi bi-clipboard"></i> Copy`;
+                        button.style.color = '';
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy code snippet: ', err);
+                }
+            });
+        });
+
+        // Mobile Layout Toggle Elements Controller
+        const menuToggle = document.getElementById('menuToggle');
+        const docsSidebar = document.getElementById('docsSidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleMenu() {
+            docsSidebar.classList.toggle('drawer-open');
+            sidebarOverlay.classList.toggle('active');
+        }
+
+        if (menuToggle) menuToggle.addEventListener('click', toggleMenu);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleMenu);
+        
+        navLinks.forEach(link => link.addEventListener('click', () => {
+            if(docsSidebar.classList.contains('drawer-open')) toggleMenu();
+        }));
 
         window.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.ss-motion-reveal').forEach(item => scrollObserver.observe(item));
+            document.querySelectorAll('.zm-motion-reveal').forEach(el => viewObserver.observe(el));
         });
 
-        const bttButton = document.getElementById('backToTop');
+        // Scroll Back to Top engine controller
+        const bttControl = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) bttButton.classList.add('btn-visible');
-            else bttButton.classList.remove('btn-visible');
+            if (window.scrollY > 250) bttControl.classList.add('btn-visible');
+            else bttControl.classList.remove('btn-visible');
         });
-        bttButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        bttControl.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     </script>
 </body>
 </html>
