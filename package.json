@@ -1,0 +1,20 @@
+{
+  "name": "@stylesite/core",
+  "version": "1.0.0",
+  "description": "An inspired frontend CSS layout core library engine constructed for fluid, unboxed single-column stack frameworks.",
+  "main": "index.css",
+  "style": "index.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "unboxed",
+    "containerless",
+    "stylesite",
+    "aurora-theme"
+  ],
+  "author": "Sahir Punjwani",
+  "license": "MIT"
+}
