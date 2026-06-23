@@ -1,24 +1,24 @@
 /* ==========================================================================
-   STYLESITE // CORE ENGINE v1.0.0
-   An Inspired, Component-Driven CSS Library for Unboxed Layouts
+   STYLESITE // CORE UTILITY FRAMEWORK v1.0.0
+   An Open-Source Component Engine for Box-Free Minimalist Layouts
    ========================================================================== */
 
 :root {
-    --ss-bg: #020408;
-    --ss-glow-cyan: #00f2ff;
-    --ss-glow-pink: #ff0055;
-    --ss-text-bright: #f1f3f9;
-    --ss-text-dim: #b8c4ed;
-    --ss-text-dark: #727e9c;
+    --ss-bg-matrix: #020408;
+    --ss-accent-cyan: #00f2ff;
+    --ss-accent-pink: #ff0055;
+    --ss-text-primary: #f1f3f9;
+    --ss-text-secondary: #b8c4ed;
+    --ss-text-muted: #6d7a9e;
 }
 
-/* Global Immersive Workspace Setup */
+/* Global Dark Aurora Setting */
 .ss-workspace {
-    background-color: var(--ss-bg);
+    background-color: var(--ss-bg-matrix);
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(0, 242, 255, 0.05) 0%, transparent 50%),
         radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.04) 0%, transparent 60%);
-    color: var(--ss-text-bright);
+    color: var(--ss-text-primary);
     min-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -27,7 +27,7 @@
     align-items: center;
 }
 
-/* Structural Segment Layouts */
+/* Structural Segment Layout (Overlap Protection) */
 .ss-section {
     width: 100%;
     display: flex;
@@ -38,8 +38,8 @@
     scroll-mt: 140px;
 }
 
-/* Strict Single-Item Row Engine Rule */
-.ss-row-stack {
+/* Absolute 1 Item Per Horizontal Row Stack Engine Rule */
+.ss-stack {
     display: flex;
     flex-direction: column;
     gap: 5.5rem;
@@ -47,7 +47,7 @@
     max-width: 900px;
 }
 
-/* Containerless Bare Typography Layout Blocks */
+/* Containerless Direct Text Block */
 .ss-unboxed-content {
     width: 100%;
     background: transparent !important;
@@ -68,22 +68,22 @@
 }
 
 .ss-unboxed-content h3 i {
-    color: var(--ss-glow-cyan);
+    color: var(--ss-accent-cyan);
 }
 
 .ss-unboxed-content p {
     font-size: 1.45rem;
-    color: var(--ss-text-dim);
+    color: var(--ss-text-secondary);
     line-height: 1.85;
     font-weight: 300;
 }
 
 .ss-unboxed-content p strong {
-    color: var(--ss-glow-cyan);
+    color: var(--ss-accent-cyan);
     font-weight: 600;
 }
 
-/* Immersive Hero Graphic Title Backdrop Component */
+/* Immersive Header Graphic Title Banner Backdrop */
 .ss-hero-backdrop {
     width: 100%;
     max-width: 900px;
@@ -107,7 +107,7 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover;
     background-position: center;
-    opacity: 0.2;
+    opacity: 0.18;
     z-index: -1;
 }
 
@@ -121,11 +121,11 @@
 
 .ss-hero-backdrop p {
     font-size: 1.2rem;
-    color: var(--ss-glow-cyan);
+    color: var(--ss-accent-cyan);
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* High-End Symmetric Footer Component Layout */
+/* Multi-Column Layout Footer Exception */
 .ss-footer {
     width: 100%;
     background-color: rgba(3, 5, 10, 0.85);
@@ -148,60 +148,21 @@
     margin-bottom: 5rem;
 }
 
-.ss-footer-brand h4 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: -0.5px;
-}
+.ss-footer-brand h4 { font-size: 1.8rem; font-weight: 900; color: #ffffff; letter-spacing: -0.5px; }
+.ss-footer-brand h4 span { color: var(--ss-accent-cyan); font-weight: 400; }
+.ss-footer-brand p { font-size: 1.2rem; color: var(--ss-text-secondary); line-height: 1.6; margin-top: 1.25rem; }
 
-.ss-footer-brand h4 span { color: var(--ss-glow-cyan); font-weight: 400; }
-
-.ss-footer-brand p {
-    font-size: 1.2rem;
-    color: var(--ss-text-dim);
-    line-height: 1.6;
-    margin-top: 1.25rem;
-}
-
-.ss-footer-links h5 {
-    font-size: 1rem;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.ss-footer-links ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.ss-footer-links ul li a {
-    font-size: 1.2rem;
-    color: var(--ss-text-dim);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.ss-footer-links ul li a:hover {
-    color: var(--ss-glow-cyan);
-}
+.ss-footer-links h5 { font-size: 1rem; color: #ffffff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 1.5rem; font-weight: 700; }
+.ss-footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 1.25rem; }
+.ss-footer-links ul li a { font-size: 1.2rem; color: var(--ss-text-secondary); text-decoration: none; transition: color 0.2s ease; }
+.ss-footer-links ul li a:hover { color: var(--ss-accent-cyan); }
 
 .ss-footer-bottom {
-    width: 100%;
-    max-width: 1100px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%; max-width: 1100px; border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 2.5rem; display: flex; justify-content: space-between; align-items: center;
 }
 
-/* Two-Way Responsive Scroll Animation Tokens */
+/* Smooth Two-Way Scroll Interaction Reveal Elements */
 .ss-motion-reveal {
     opacity: 0;
     transform: translateY(40px) scale(0.98);
