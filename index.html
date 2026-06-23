@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zetatk // Production Matrix</title>
+    
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* Floating Glassmorphic Header Navigation Dock */
+        header {
+            width: calc(100% - 2rem); max-width: 1200px; margin: 1.5rem auto; padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+            background: rgba(4, 6, 14, 0.75); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            position: sticky; top: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px;
+        }
+        .header-hint {
+            font-family: monospace; font-size: 0.8rem; color: #00f2ff; background: rgba(0, 242, 255, 0.08);
+            padding: 0.5rem 1.2rem; border-radius: 30px; border: 1px solid rgba(0, 242, 255, 0.25); text-transform: uppercase;
+        }
+        #backToTop {
+            position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px; background: rgba(4, 6, 14, 0.8);
+            border: 1px solid rgba(0, 242, 255, 0.3); color: #00f2ff; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; font-size: 1.4rem; cursor: pointer; z-index: 999;
+            opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.4s ease;
+        }
+        #backToTop.btn-visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        /* Banner Backdrop Target Imagery Maps */
+        .banner-specifications::before { background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-changelogs::before { background-image: url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=1200&q=80'); }
+        .banner-registry::before { background-image: url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=1200&q=80'); }
+    </style>
+</head>
+<body class="ss-workspace">
+
+    <button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+    <header>
+        <div style="font-size: 1.5rem; font-weight: 900;">Zetatk<span style="color: #00f2ff; font-weight: 400;">//</span></div>
+        <div class="header-hint">Continuous Matrix</div>
+    </header>
+
+    <section id="view-docs" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-specifications">
+            <h2>Specifications</h2>
+            <p>// Core Platform Engineering Architecture</p>
+        </div>
+
+        <div class="ss-row-stack">
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-file-earmark-text"></i> Overview</h3>
+                <p>Welcome to the <strong>Zetatk system engineering specifications guide</strong>. Zetatk is structured to enable modular distribution of high-performance rendering components, tools, and digital platforms seamlessly across the global developer pipeline.</p>
+            </div>
+
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <h3><i class="bi bi-eye"></i> Zetatk Vision</h3>
+                <p>"Our vision is to <strong>redefine the future of digital creation</strong> by building an ecosystem where every web developer has instant access to the ultimate tools and resources needed to build a seamless internet layout."</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="view-changelog" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-changelogs">
+            <h2>Product Releases</h2>
+            <p>// Live Production Matrix Timeline</p>
+        </div>
+
+        <div class="ss-row-stack">
+            <div class="ss-unboxed-content ss-motion-reveal">
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-family: monospace; font-size: 0.9rem; color: #ff0055; background: rgba(255,0,85,0.06); padding: 0.3rem 0.8rem; border-radius: 8px; border: 1px solid rgba(255,0,85,0.2);">v1.2.0</span>
+                    <span style="color: #727e9c; font-size: 1rem; font-weight: 600;">June 2026</span>
+                </div>
+                <h3 style="margin-top: 1rem;">Released SnapUi, Valify-js, Devclockify-js</h3>
+                <p>The complete engineering libraries for secure frontend data input styles paired with ultra-low latency input data processing validation loops.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="view-products" class="ss-section">
+        <div class="ss-hero-backdrop ss-motion-reveal banner-registry">
+            <h2>Products By Zetatk</h2>
+            <p>// Open-Source Digital Playground Registry</p>
+        </div>
+
+        <div class="ss-row-stack">
+            <a href="#" class="ss-unboxed-content ss-motion-reveal" style="text-decoration: none; color: inherit;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                    <i class="bi bi-alarm" style="font-size: 1.8rem; color: #00f2ff;"></i>
+                    <span style="font-family: monospace; font-size: 0.85rem; color: #ff0055; font-weight: 700; text-transform: uppercase;">Library</span>
+                </div>
+                <div style="font-size: 1.9rem; font-weight: 700; font-family: monospace; margin-bottom: 0.5rem;">devclockify-js</div>
+                <p>A premium library of system tools designed for handling real-time clock triggers and elegant client alarms.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer class="ss-footer">
+        <div class="ss-footer-content">
+            <div class="ss-footer-brand">
+                <h4>Zetatk<span>//</span></h4>
+                <p>An advanced open-source laboratory engineered to deliver modern resources and utilities for developers globally.</p>
+            </div>
+            <div class="ss-footer-links">
+                <h5>Ecosystem</h5>
+                <ul>
+                    <li><a href="#view-docs">Documentation</a></li>
+                    <li><a href="#view-products">Products</a></li>
+                </ul>
+            </div>
+            <div class="ss-footer-links">
+                <h5>Community</h5>
+                <ul>
+                    <li><a href="https://github.com" target="_blank" rel="noopener">GitHub Portfolio</a></li>
+                    <li><a href="https://discord.com" target="_blank" rel="noopener">Discord Server</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="ss-footer-bottom">
+            <p>&copy; 2026 Zetatk Platform. Engineered openly under MIT Specifications.</p>
+        </div>
+    </footer>
+
+    <script>
+        const revealOptions = { root: null, threshold: 0.05, rootMargin: "0px 0px -10% 0px" };
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('view-visible');
+                else entry.target.classList.remove('view-visible');
+            });
+        }, revealOptions);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.ss-motion-reveal').forEach(item => scrollObserver.observe(item));
+        });
+
+        const bttButton = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) bttButton.classList.add('btn-visible');
+            else bttButton.classList.remove('btn-visible');
+        });
+        bttButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
