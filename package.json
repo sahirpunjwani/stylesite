@@ -2,8 +2,8 @@
   "name": "@stylesite/core",
   "version": "1.0.0",
   "description": "An inspired frontend CSS layout core library engine constructed for fluid, unboxed single-column stack frameworks.",
-  "main": "index.css",
-  "style": "index.css",
+  "main": "stylesite.css",
+  "style": "stylesite.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0"
   },
